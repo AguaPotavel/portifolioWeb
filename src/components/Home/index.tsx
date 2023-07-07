@@ -5,33 +5,68 @@ import {
   SubtitleWrapper,
   Subtitle,
   NameWrapper,
+  ButtonWrapper,
 } from "./styles";
+
+import ButtonHome from "../../elements/ButtonHome";
+import OverflowHome from "../OverflowHome";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { useState } from "react";
 
 export default function Home() {
   const variantsTitle = {
-    hidden: { x: -100, rotate: -90 },
+    hidden: {
+      x: -100,
+      rotate: -90,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
+      },
+    },
     show: {
       x: 0,
       rotate: 0,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.5,
+      },
     },
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container>
-      <SubtitleWrapper>
-        <Subtitle>Hi, I'm</Subtitle>
-        <NameWrapper
-          whileHover={{
-            scale: 1.2,
-            transition: { duration: 1 },
+      <TitleWrapper variants={variantsTitle} initial="hidden" animate="show">
+        <SubtitleWrapper>
+          <Subtitle>Hi, I'm</Subtitle>
+          <NameWrapper>
+            <Subtitle className="name">Ruan</Subtitle>
+          </NameWrapper>
+        </SubtitleWrapper>
+        <Title>FullStack Developer</Title>
+        <ButtonWrapper
+          animate={{
+            transition: { delayChildren: 0.2, staggerChildren: 0.4 },
           }}
         >
-          <Subtitle className="name">Ruan</Subtitle>
-        </NameWrapper>
-      </SubtitleWrapper>
-      <TitleWrapper variants={variantsTitle} initial="hidden" animate="show">
-        <Title>FullStack Developer</Title>
+          <ButtonHome
+            color="#333"
+            onClick={() => console.log("teste")}
+            onMouseEnter={() => console.log("entrou")}
+          >
+            <AiFillGithub size={24} color={"#fff"} />
+          </ButtonHome>
+          <ButtonHome
+            color="#0e76a8"
+            onClick={() => console.log("teste")}
+            onMouseEnter={() => console.log("entrou")}
+          >
+            <AiFillLinkedin size={24} color={"#fff"} />
+          </ButtonHome>
+        </ButtonWrapper>
       </TitleWrapper>
+      <OverflowHome isOpen={isOpen} />
     </Container>
   );
 }

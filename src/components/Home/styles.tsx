@@ -18,7 +18,7 @@ export const TitleWrapper = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: auto;
   height: fit-content;
   overflow: hidden;
 `;
@@ -44,7 +44,6 @@ export const SubtitleWrapper = styled(motion.div)`
   justify-content: flex-start;
   width: 100%;
   height: fit-content;
-  max-width: 80vw;
   overflow: hidden;
 `;
 
@@ -73,7 +72,7 @@ export const NameWrapper = styled(motion.div)`
     position: absolute;
     width: 1%;
     height: 100%;
-    left: 0;
+    left: -5px;
     background-color: ${(props) => props.theme.colors.primary.main};
     transition: all 0.5s ease-in-out;
   }
@@ -95,5 +94,22 @@ export const Subtitle = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 2rem;
+  }
+`;
+
+export const ButtonWrapper = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  height: fit-content;
+  gap: 10px;
+  padding: 10px 0px;
+
+  @media (max-width: 1145px) {
+    justify-content: flex-start;
+    padding: 10px 10px;
+    margin-left: 10px;
   }
 `;
